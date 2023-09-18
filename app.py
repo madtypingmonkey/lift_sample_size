@@ -3,10 +3,10 @@ from dash import dcc, html, Input, Output
 import scipy
 import math
 
-app = dash.Dash(__name__)
-server = app.server
+dash_app = dash.Dash(__name__)
+app = dash_app.server
 
-app.layout = html.Div([
+dash_app.layout = html.Div([
   html.H1("Study sample size calculator"),
 
   # Input components
@@ -22,7 +22,7 @@ app.layout = html.Div([
   html.Div(id='output-2'),
   html.Div(id='output-3')
 ])
-@app.callback(
+@dash_app.callback(
   Output('output-1', 'children'),
   Output('output-2', 'children'),
   Output('output-3', 'children'),
@@ -52,5 +52,5 @@ def update_outputs(input1, input2, input3, input4, input5, input6):
 
 
 if __name__ == '__main__':
-  app.run_server(debug=False)
+  dash_app.run_server(debug=True)
 
